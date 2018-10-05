@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -it --rm aegis
+docker run -it --network="bridge"  --rm aegis
