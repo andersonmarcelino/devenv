@@ -12,7 +12,8 @@ RUN apt-get update && apt-get install -y \
       zsh \
       curl \
       vim \
-      git
+      git \
+      tmux
 
 ENV DOCKERVERSION=18.03.1-ce
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
@@ -20,4 +21,6 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
                  -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
 
-CMD zsh
+RUN chsh -s $(which zsh)
+
+CMD tmux
