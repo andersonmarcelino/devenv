@@ -1,16 +1,18 @@
-###########################################
-#                                         #
-#           Aegis: A Docker IDE           #
-# Author: Anderson Marcelino              #
-# Email: anderson@andersonmarcelino.com.br#
-#                                         #
-###########################################
+# My Dev Env
+#
+# docker build . -t andersonmarcelino/devenv
+# docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock andersonmarcelino/devenv
+#
 
-FROM debian:latest
+
+FROM debian:buster-slim
+LABEL maintainer "Anderson Marcelino <anderson@andersonmarcelino.com.br>"
 
 RUN apt-get update && apt-get install -y \
       zsh \
-      curl
+      curl \
+      vim \
+      git
 
 ENV DOCKERVERSION=18.03.1-ce
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
