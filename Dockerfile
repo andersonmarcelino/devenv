@@ -23,4 +23,7 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
 
 RUN chsh -s $(which zsh)
 
-CMD tmux
+COPY scripts/entry.sh /bin/entry.sh
+RUN chmod +x /bin/entry.sh
+
+ENTRYPOINT ["/bin/entry.sh"]
