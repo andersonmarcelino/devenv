@@ -26,4 +26,6 @@ RUN chsh -s $(which zsh)
 COPY scripts/entry.sh /bin/entry.sh
 RUN chmod +x /bin/entry.sh
 
+WORKDIR /root/workspace
+
 ENTRYPOINT ["/bin/entry.sh", "tmux"]
