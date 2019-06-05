@@ -26,4 +26,4 @@ RUN chsh -s $(which zsh)
 COPY scripts/entry.sh /bin/entry.sh
 RUN chmod +x /bin/entry.sh
 
-ENTRYPOINT ["/bin/entry.sh"]
+ENTRYPOINT ["/bin/entry.sh", "tmux"]
