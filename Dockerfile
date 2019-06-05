@@ -26,8 +26,8 @@ RUN chsh -s $(which zsh)
 COPY scripts/entry.sh /bin/entry.sh
 RUN chmod +x /bin/entry.sh
 
-COPY scripts/initconfig.sh /bin/initconfig.sh
-RUN chmod +x /bin/initconfig.sh
+COPY scripts/initconfig.sh /bin/initconfig
+RUN chmod +x /bin/initconfig
 
 WORKDIR /root/workspace
 
