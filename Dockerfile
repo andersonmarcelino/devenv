@@ -29,6 +29,8 @@ RUN chmod +x /bin/entry.sh
 COPY scripts/initconfig.sh /bin/initconfig
 RUN chmod +x /bin/initconfig
 
+COPY dotfiles/gitconfig /root/.gitconfig
+
 WORKDIR /root/workspace
 
 ENTRYPOINT ["/bin/entry.sh", "tmux"]

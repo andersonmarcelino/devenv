@@ -1,0 +1,30 @@
+[push]
+  default = current
+[color]
+  ui = auto
+[alias]
+  aa = add --all
+  ap = add --patch
+  ai = add -i
+  ca = commit --amend
+  cm = commit -m
+  co = checkout
+  new = checkout -b
+  pl = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git pull --rebase --autostash origin"
+  ps = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git push -u origin"
+  fps = push -u --force-with-lease
+  s = status
+  f = fetch origin
+  up = !git fetch origin && git rebase origin/master
+  pruneitgood = "!f() { \
+    git remote prune origin; \
+    git branch -vv | perl -nae 'system(qw(git branch -d), $F[0]) if $F[3] eq q{gone]}'; \
+  }; f"
+
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+[merge]
+  ff = only
+[include]
+  path = ~/workspace/.config/gitconfig.local
