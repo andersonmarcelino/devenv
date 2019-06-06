@@ -1,11 +1,29 @@
 #!/bin/sh
 
+currentname=$(git config -l | grep user.name | cut -d "=" -f 2-2)
+currentemail=$(git config -l | grep user.email | cut -d "=" -f 2-2)
+
 echo 'configuring your envioriment'
-rm ~/workspace/.config/gitconfig.local || true
-echo 'your name: '
+
+if [ -f ~/workspace/.config/gitconfig.local ]
+  then
+    rm ~/workspace/.config/gitconfig.local
+fi
+
+echo -n "your name ($currentname):"
 read username
-echo 'your email:'
+echo -n "your email ($currentemail):"
 read useremail
+
+if [ -z "$username" ]
+  then
+    username=$currentname
+fi
+
+if [ -z "$useremail" ]
+  then
+    useremail=$currentemail
+fi
 
 echo "[user]
   name = $username
