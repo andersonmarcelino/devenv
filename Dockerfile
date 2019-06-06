@@ -33,7 +33,7 @@ COPY scripts/initconfig.sh /bin/initconfig
 RUN chmod +x /bin/initconfig
 
 COPY dotfiles/gitconfig /root/.gitconfig
-COPY dotfiles/zshrc /root/.zsh
+COPY dotfiles/zshrc /root/.zshrc
 
 WORKDIR /root/workspace
 
