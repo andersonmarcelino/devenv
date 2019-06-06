@@ -6,6 +6,13 @@ if [ ! -d ~/workspace/.config ]
     mkdir ~/workspace/.config
 fi
 
+if [ ! -f ~/workspace/.config/zsh_history ]
+  then
+    touch ~/workspace/.config/zsh_history
+fi
+
+ln -s ~/workspace/.config/zsh_history ~/.zsh_history
+
 if [ -d ~/workspace/.config/ssh ]
   then
     cp -R ~/workspace/.config/ssh /root/.ssh
