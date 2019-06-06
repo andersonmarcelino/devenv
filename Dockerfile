@@ -34,6 +34,7 @@ RUN chmod +x /bin/initconfig
 
 COPY dotfiles/gitconfig /root/.gitconfig
 COPY dotfiles/zshrc /root/.zshrc
+COPY dotfiles/tmux.conf /root/.tmux.conf
 
 WORKDIR /root/workspace
 
