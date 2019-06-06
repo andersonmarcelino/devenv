@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
   git \
   tmux \
   wget \
+  procps \
   silversearcher-ag
 
 ENV DOCKERVERSION=18.03.1-ce

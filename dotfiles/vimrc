@@ -220,8 +220,9 @@ endfunction
 
 au BufWritePre * :call <SID>RemoveTrailingWhitespaces()
 
-" cmd n, cmd p for fwd/backward in search
-map <C-p> :FZF<CR><CR>
+" map FZF
+map <C-p> :FZF<CR>
+map <Leader>p :FZF<CR>
 
 " Create related file (Rails Spec file if missing). :AC
 function! s:CreateRelated()
