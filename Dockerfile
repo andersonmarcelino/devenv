@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
   tmux \
   wget \
   procps \
+  docker-compose \
   silversearcher-ag
 
 ENV DOCKERVERSION=18.03.1-ce

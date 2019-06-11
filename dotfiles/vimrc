@@ -222,7 +222,7 @@ au BufWritePre * :call <SID>RemoveTrailingWhitespaces()
 
 " map FZF
 map <C-p> :FZF<CR>
-map <Leader>p :FZF<CR>
+map <Leader>f :FZF<CR>
 
 " Create related file (Rails Spec file if missing). :AC
 function! s:CreateRelated()
