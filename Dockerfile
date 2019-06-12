@@ -35,6 +35,15 @@ RUN chmod +x /bin/entry.sh
 COPY scripts/initconfig.sh /bin/initconfig
 RUN chmod +x /bin/initconfig
 
+COPY scripts/fakes/ruby /bin/ruby
+RUN chmod +x /bin/ruby
+
+COPY scripts/fakes/node /bin/node
+RUN chmod +x /bin/node
+
+COPY scripts/fakes/npm /bin/npm
+RUN chmod +x /bin/npm
+
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 RUN ~/.fzf/install
 
