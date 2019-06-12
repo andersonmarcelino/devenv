@@ -106,4 +106,7 @@ COPY dotfiles/vimrc /root/.vimrc
 
 WORKDIR /root/workspace
 
+ENV LANGUAGE pt_BR.UTF-8
+ENV LANG pt_BR.UTF-8
+
 ENTRYPOINT ["/bin/entry.sh", "tmux"]
