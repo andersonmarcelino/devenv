@@ -54,6 +54,7 @@ RUN apk add --no-cache \
     libxt \
     ncurses \
     py-pip \
+    openssh \
     openssh-keygen
 
 RUN pip install 'docker-compose==1.23.2'
