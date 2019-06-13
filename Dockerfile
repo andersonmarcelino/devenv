@@ -4,20 +4,59 @@
 # docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock andersonmarcelino/devenv
 #
 
+FROM alpine:latest as builder
 
-FROM debian:buster-slim
-LABEL maintainer "Anderson Marcelino <anderson@andersonmarcelino.com.br>"
+WORKDIR /tmp
 
-RUN apt-get update && apt-get install -y \
-  zsh \
-  curl \
-  vim \
-  git \
-  tmux \
-  wget \
-  procps \
-  docker-compose \
-  silversearcher-ag
+# Install dependencies
+RUN apk add --no-cache \
+    build-base \
+    ctags \
+    git \
+    libx11-dev \
+    libxpm-dev \
+    libxt-dev \
+    make \
+    ncurses-dev \
+    python \
+    python-dev
+
+# Build vim from git source
+RUN git clone --depth 1 https://github.com/vim/vim \
+ && cd vim \
+ && ./configure \
+    --disable-gui \
+    --disable-netbeans \
+    --enable-multibyte \
+    --enable-pythoninterp \
+    --with-features=big \
+    --with-python-config-dir=/usr/lib/python2.7/config \
+ && make install
+
+ FROM alpine:latest
+
+ COPY --from=builder /usr/local/bin/ /usr/local/bin
+ COPY --from=builder /usr/local/share/vim/ /usr/local/share/vim/
+ # NOTE: man page is ignored
+
+RUN apk add --no-cache \
+    zsh \
+    bash \
+    curl \
+    git \
+    tmux \
+    wget \
+    procps \
+    the_silver_searcher \
+    libice \
+    libsm \
+    libx11 \
+    libxt \
+    ncurses \
+    py-pip \
+    openssh-keygen
+
+RUN pip install 'docker-compose==1.23.2'
 
 ENV DOCKERVERSION=18.03.1-ce
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
@@ -25,7 +64,9 @@ RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${
                  -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
 
-RUN chsh -s $(which zsh)
+RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
+
+ENV SHELL /bin/zsh
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
@@ -104,9 +145,9 @@ COPY dotfiles/zshrc /root/.zshrc
 COPY dotfiles/tmux.conf /root/.tmux.conf
 COPY dotfiles/vimrc /root/.vimrc
 
-WORKDIR /root/workspace
-
 ENV LANGUAGE pt_BR.UTF-8
 ENV LANG pt_BR.UTF-8
+
+WORKDIR /root/workspace
 
 ENTRYPOINT ["/bin/entry.sh", "tmux"]
