@@ -42,6 +42,8 @@ RUN git clone --depth 1 https://github.com/vim/vim \
 RUN apk add --no-cache \
     zsh \
     bash \
+    bash-completion \
+    findutils \
     curl \
     git \
     tmux \
