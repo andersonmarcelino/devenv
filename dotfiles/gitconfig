@@ -6,7 +6,7 @@
   aa = add --all
   ap = add --patch
   ai = add -i
-  ca = commit --amend
+  ca = commit --amend --no-edit
   cm = commit -m
   co = checkout
   new = checkout -b
