@@ -62,7 +62,8 @@ RUN apk add --no-cache \
     python-dev \
     libgcc \
     openssh \
-    openssh-keygen
+    openssh-keygen \
+    tig
 
 RUN pip install docker-compose
 
