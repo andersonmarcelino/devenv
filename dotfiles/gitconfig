@@ -3,6 +3,7 @@
 [color]
   ui = true
 [alias]
+  l = log --pretty=oneline --graph --abbrev-commit
   aa = add --all
   ap = add --patch
   ai = add -i
