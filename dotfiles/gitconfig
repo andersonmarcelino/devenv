@@ -1,7 +1,7 @@
 [push]
   default = current
 [color]
-  ui = auto
+  ui = true
 [alias]
   aa = add --all
   ap = add --patch
@@ -12,8 +12,8 @@
   new = checkout -b
   pl = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git pull --rebase --autostash origin"
   ps = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git push -u origin"
-  fps = push -u --force-with-lease
-  s = status
+  fps = ps --force-with-lease
+  s = status -s
   f = fetch origin
   up = !git fetch origin && git rebase origin/master
   pruneitgood = "!f() { \
@@ -24,6 +24,7 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+  pager = more
 [merge]
   ff = only
 [include]
