@@ -56,10 +56,15 @@ RUN apk add --no-cache \
     libxt \
     ncurses \
     py-pip \
+    libffi-dev \
+    openssl-dev \
+    build-base \
+    python-dev \
+    libgcc \
     openssh \
     openssh-keygen
 
-RUN pip install 'docker-compose==1.23.2'
+RUN pip install docker-compose
 
 ENV DOCKERVERSION=18.03.1-ce
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
