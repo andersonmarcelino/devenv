@@ -3,6 +3,7 @@ alias yarn="docker exec -it workspace_${PWD##*/}_1 yarn"
 alias rails="docker exec -it workspace_${PWD##*/}_1 bundle exec rails"
 alias bundle="docker exec -it workspace_${PWD##*/}_1 bundle"
 alias runin="docker exec -it workspace_${PWD##*/}_1"
+alias dattach="docker attach --detach-keys ctrl-x workspace_${PWD##*/}_1"
 
 # xD
 alias :q="exit"
