@@ -45,7 +45,9 @@ RUN apk add --no-cache \
     bash-completion \
     findutils \
     curl \
+    perl \
     git \
+    git-perl \
     tmux \
     wget \
     procps \
