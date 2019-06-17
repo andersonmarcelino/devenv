@@ -16,6 +16,7 @@ alias dcstop="docker-compose -f /root/workspace/docker-compose.yml stop"
 #git without space
 alias gs="g s"
 alias gcm="g cm"
+alias gco="g co"
 alias gca="g cm"
 alias gps="g ps"
 alias gfps="g ps"
