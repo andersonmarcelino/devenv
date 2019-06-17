@@ -151,6 +151,7 @@ RUN cd /root/.vim/bundle \
 
 COPY dotfiles/gitconfig /root/.gitconfig
 COPY dotfiles/zshrc /root/.zshrc
+COPY dotfiles/aliases /root/.aliases
 COPY dotfiles/tmux.conf /root/.tmux.conf
 COPY dotfiles/vimrc /root/.vimrc
 

@@ -1,0 +1,22 @@
+# run common dockers commands
+alias yarn="docker exec -it workspace_${PWD##*/}_1 yarn"
+alias rails="docker exec -it workspace_${PWD##*/}_1 bundle exec rails"
+alias bundle="docker exec -it workspace_${PWD##*/}_1 bundle"
+alias runin="docker exec -it workspace_${PWD##*/}_1"
+
+# xD
+alias :q="exit"
+
+#docker compose aliases
+alias dcup="docker-compose -f /root/workspace/docker-compose.yml up -d"
+alias dcstart="docker-compose -f /root/workspace/docker-compose.yml start"
+alias dcstop="docker-compose -f /root/workspace/docker-compose.yml stop"
+
+#git without space
+alias gs="g s"
+alias gcm="g cm"
+alias gca="g cm"
+alias gps="g ps"
+alias gfps="g ps"
+alias gpl="g pl"
+alias gl="g l"
