@@ -98,6 +98,7 @@ RUN chmod +x /bin/npm
 
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 RUN ~/.fzf/install
+RUN cp ~/.fzf/bin/fzf /bin/fzf
 
 RUN mkdir /root/.vim
 RUN mkdir /root/.vim/bundle
