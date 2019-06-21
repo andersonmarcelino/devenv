@@ -7,3 +7,8 @@ to run the container
   docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock \
                       -v ~/workspace:/root/workspace andersonmarcelino/devenv
 ```
+
+FIX IT LAT
+```bash
+  xhost +local:docker
+```
