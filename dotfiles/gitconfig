@@ -21,6 +21,8 @@
     git remote prune origin; \
     git branch -vv | perl -nae 'system(qw(git branch -d), $F[0]) if $F[3] eq q{gone]}'; \
   }; f"
+  prev = checkout HEAD^1
+  next = "!sh -c 'git log --reverse --pretty=%H master | awk \"/$(git rev-parse HEAD)/{getline;print}\" | xargs git checkout'"
 
 [core]
   excludesfile = ~/.gitignore
