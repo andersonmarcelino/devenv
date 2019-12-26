@@ -30,6 +30,10 @@ map <leader>s <c-w>v<CR>
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
+"map folding
+map <leader>z :setlocal foldmethod=indent<CR>
+map <leader>Z :setlocal foldmethod=manual<CR>
+
 let test#strategy = "tslime"
 
 " Toggle nerdtree with F10
