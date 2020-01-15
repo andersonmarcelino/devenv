@@ -10,6 +10,7 @@ alias dattach='docker attach --detach-keys ctrl-x workspace_${PWD##*/}_1'
 
 # xD
 alias :q='exit'
+alias bim='vim'
 
 #docker compose aliases
 alias dcup='docker-compose -f /root/workspace/docker-compose.yml up -d'
