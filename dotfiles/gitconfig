@@ -13,6 +13,7 @@
   new = checkout -b
   pl = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git pull --rebase --autostash origin"
   ps = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git push -u origin"
+  change = "!git branch -a | fzf | awk '{sub(/remotes\\/origin\\//, \"\", $1); print $1}' | xargs git checkout "
   fps = ps --force-with-lease
   s = status -s
   f = fetch origin
