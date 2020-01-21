@@ -23,7 +23,8 @@ map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>
-map <Leader>gp :Gpush<CR>
+map <Leader>gp :Git pl<CR>
+map <Leader>ga :Git add -i<CR>
 map <Leader>t :tabedit .<CR>
 map <leader>s <c-w>v<CR>
 
