@@ -4,40 +4,7 @@
 # docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock andersonmarcelino/devenv
 #
 
-FROM alpine:latest as builder
-
-WORKDIR /tmp
-
-# Install dependencies
-RUN apk add --no-cache \
-    build-base \
-    ctags \
-    git \
-    libx11-dev \
-    libxpm-dev \
-    libxt-dev \
-    make \
-    ncurses-dev \
-    python \
-    python-dev
-
-# Build vim from git source
-RUN git clone --depth 1 https://github.com/vim/vim \
- && cd vim \
- && ./configure \
-    --disable-gui \
-    --disable-netbeans \
-    --enable-multibyte \
-    --enable-pythoninterp \
-    --with-features=big \
-    --with-python-config-dir=/usr/lib/python2.7/config \
- && make install
-
- FROM alpine:latest
-
- COPY --from=builder /usr/local/bin/ /usr/local/bin
- COPY --from=builder /usr/local/share/vim/ /usr/local/share/vim/
- # NOTE: man page is ignored
+FROM alpine:latest
 
 RUN apk add --no-cache \
     zsh \
@@ -65,6 +32,8 @@ RUN apk add --no-cache \
     libgcc \
     openssh \
     openssh-keygen \
+    neovim \
+    xclip \
     tig
 
 RUN pip install docker-compose
@@ -100,13 +69,14 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 RUN ~/.fzf/install
 RUN cp ~/.fzf/bin/fzf /bin/fzf
 
-RUN mkdir /root/.vim
-RUN mkdir /root/.vim/bundle
-RUN mkdir /root/.vim/autoload
+RUN mkdir /root/.config
+RUN mkdir /root/.config/nvim
+RUN mkdir /root/.config/nvim/bundle
+RUN mkdir /root/.config/nvim/autoload
 
-RUN curl -LSso /root/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+RUN curl -LSso /root/.config/nvim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-RUN cd /root/.vim/bundle \
+RUN cd /root/.config/nvim/bundle \
  && git clone --depth 1 https://github.com/tpope/vim-sensible \
  && git clone --depth 1 https://github.com/tpope/vim-fugitive \
  && git clone --depth 1 https://github.com/tpope/vim-projectionist \
@@ -156,7 +126,7 @@ COPY dotfiles/gitconfig /root/.gitconfig
 COPY dotfiles/zshrc /root/.zshrc
 COPY dotfiles/aliases /root/.aliases
 COPY dotfiles/tmux.conf /root/.tmux.conf
-COPY dotfiles/vimrc /root/.vimrc
+COPY dotfiles/vimrc /root/.config/nvim/init.vim
 
 ENV LANGUAGE pt_BR.UTF-8
 ENV LANG pt_BR.UTF-8
