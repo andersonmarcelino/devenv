@@ -210,6 +210,10 @@ au BufWritePre * :call <SID>RemoveTrailingWhitespaces()
 map <C-p> :FZF<CR>
 map <Leader>f :FZF<CR>
 
+let tmuxpanerun=1
+nnoremap <leader>rr :execute "!tmux send-keys -t " tmuxpanerun " C-z 'rspec ' % Enter"<CR>
+nnoremap <leader>rl :execute "!tmux send-keys -t " tmuxpanerun " C-z 'rspec ' %  ':' " line('.') " Enter"<CR>
+
 " Create related file (Rails Spec file if missing). :AC
 function! s:CreateRelated()
   let related = rails#buffer().alternate_candidates()[0]
