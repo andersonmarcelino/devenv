@@ -1,2 +1,2 @@
 #!/bin/sh
-docker exec workspace_${PWD##*/}_1 ruby $@
+docker exec workspace_${PWD##*/}_1 npm $@
