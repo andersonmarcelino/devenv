@@ -11,8 +11,8 @@
   cm = commit -m
   co = checkout
   new = checkout -b
-  pl = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git pull --rebase --autostash origin"
-  ps = "!git branch | grep \\* | cut -d ' ' -f2- | xargs git push -u origin"
+  pl = "!git pull --rebase --autostash origin $(git rev-parse --abbrev-ref HEAD)"
+  ps = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
   change = "!git branch -a | fzf | awk '{sub(/remotes\\/origin\\//, \"\", $1); print $1}' | xargs git checkout "
   fps = ps --force-with-lease
   s = status -s
