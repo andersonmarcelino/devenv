@@ -4,7 +4,7 @@
 # docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock andersonmarcelino/devenv
 #
 
-FROM alpine:latest
+FROM docker/compose:alpine-1.25.4
 
 RUN apk add --no-cache \
     zsh \
@@ -24,11 +24,8 @@ RUN apk add --no-cache \
     libx11 \
     libxt \
     ncurses \
-    py-pip \
     libffi-dev \
     openssl-dev \
-    build-base \
-    python-dev \
     libgcc \
     openssh \
     openssh-keygen \
@@ -36,13 +33,6 @@ RUN apk add --no-cache \
     xclip \
     tig
 
-RUN pip install docker-compose
-
-ENV DOCKERVERSION=18.03.1-ce
-RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
-  && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 \
-                 -C /usr/local/bin docker/docker \
-  && rm docker-${DOCKERVERSION}.tgz
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
