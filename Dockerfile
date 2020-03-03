@@ -4,7 +4,7 @@
 # docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock andersonmarcelino/devenv
 #
 
-FROM docker/compose:alpine-1.25.4
+FROM docker/compose:alpine-1.26.0-rc2
 
 RUN apk add --no-cache \
     zsh \
