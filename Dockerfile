@@ -70,23 +70,15 @@ RUN cd /root/.config/nvim/bundle \
  && git clone --depth 1 https://github.com/tpope/vim-sensible \
  && git clone --depth 1 https://github.com/tpope/vim-fugitive \
  && git clone --depth 1 https://github.com/tpope/vim-projectionist \
- && git clone --depth 1 https://github.com/mustache/vim-mustache-handlebars \
- && git clone --depth 1 https://github.com/blarghmatey/split-expander \
  && git clone --depth 1 https://github.com/ngmy/vim-rubocop \
  && git clone --depth 1 https://github.com/rking/ag.vim \
- && git clone --depth 1 https://github.com/sjl/vitality.vim \
  && git clone --depth 1 https://github.com/janko-m/vim-test \
- && git clone --depth 1 https://github.com/tpope/vim-bundler \
- && git clone --depth 1 https://github.com/ecomba/vim-ruby-refactoring \
  && git clone --depth 1 https://github.com/tpope/vim-endwise \
  && git clone --depth 1 https://github.com/tpope/vim-surround \
  && git clone --depth 1 https://github.com/tmhedberg/matchit \
- && git clone --depth 1 https://github.com/kana/vim-textobj-user \
- && git clone --depth 1 https://github.com/nelstrom/vim-textobj-rubyblock \
  && git clone --depth 1 https://github.com/vim-scripts/tComment \
  && git clone --depth 1 https://github.com/scrooloose/nerdtree \
  && git clone --depth 1 https://github.com/MarcWeber/vim-addon-mw-utils \
- && git clone --depth 1 https://github.com/tomtom/tlib_vim \
  && git clone --depth 1 https://github.com/skwp/greplace.vim \
  && git clone --depth 1 https://github.com/vim-ruby/vim-ruby \
  && git clone --depth 1 https://github.com/elixir-lang/vim-elixir \
@@ -98,11 +90,9 @@ RUN cd /root/.config/nvim/bundle \
  && git clone --depth 1 https://github.com/myusuf3/numbers.vim \
  && git clone --depth 1 https://github.com/christoomey/vim-tmux-navigator \
  && git clone --depth 1 https://github.com/jgdavey/tslime.vim \
- && git clone --depth 1 https://github.com/henrik/vim-qargs \
  && git clone --depth 1 https://github.com/pangloss/vim-javascript \
  && git clone --depth 1 https://github.com/jelera/vim-javascript-syntax \
  && git clone --depth 1 https://github.com/jsx/jsx.vim \
- && git clone --depth 1 https://github.com/terryma/vim-expand-region \
  && git clone --depth 1 https://github.com/avdgaag/vim-phoenix \
  && git clone --depth 1 https://github.com/vim-scripts/PatternsOnText \
  && git clone --depth 1 https://github.com/yegappan/mru \
