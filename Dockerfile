@@ -45,7 +45,6 @@ RUN sed -i 's/#PermitRootLogin.*/PermitRootLogin\ yes/' /etc/ssh/sshd_config \
   && sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_dsa_key/HostKey \/etc\/ssh\/ssh_host_dsa_key/g' /etc/ssh/sshd_config \
   && sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ecdsa_key/HostKey \/etc\/ssh\/ssh_host_ecdsa_key/g' /etc/ssh/sshd_config \
   && sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ed25519_key/HostKey \/etc\/ssh\/ssh_host_ed25519_key/g' /etc/ssh/sshd_config \
-  && sed -i 's/#\sForceCommand.*/ForceCommand\ tmux\ a/' /etc/ssh/sshd_config \
   && /usr/bin/ssh-keygen -A \
   && ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
 
