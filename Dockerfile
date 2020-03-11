@@ -36,6 +36,19 @@ RUN apk add --no-cache \
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
+# enable ssh
+RUN sed -i 's/#PermitRootLogin.*/PermitRootLogin\ yes/' /etc/ssh/sshd_config \
+  && rm -rf /var/cache/apk/* \
+  && sed -ie 's/#Port 22/Port 22/g' /etc/ssh/sshd_config \
+  && sed -ri 's/#HostKey \/etc\/ssh\/ssh_host_key/HostKey \/etc\/ssh\/ssh_host_key/g' /etc/ssh/sshd_config \
+  && sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_rsa_key/HostKey \/etc\/ssh\/ssh_host_rsa_key/g' /etc/ssh/sshd_config \
+  && sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_dsa_key/HostKey \/etc\/ssh\/ssh_host_dsa_key/g' /etc/ssh/sshd_config \
+  && sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ecdsa_key/HostKey \/etc\/ssh\/ssh_host_ecdsa_key/g' /etc/ssh/sshd_config \
+  && sed -ir 's/#HostKey \/etc\/ssh\/ssh_host_ed25519_key/HostKey \/etc\/ssh\/ssh_host_ed25519_key/g' /etc/ssh/sshd_config \
+  && sed -i 's/#\sForceCommand.*/ForceCommand\ tmux\ a/' /etc/ssh/sshd_config \
+  && /usr/bin/ssh-keygen -A \
+  && ssh-keygen -t rsa -b 4096 -f  /etc/ssh/ssh_host_key
+
 ENV SHELL /bin/zsh
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh

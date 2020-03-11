@@ -6,7 +6,7 @@ to run the container
 ```bash
   docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock \
     -v ~/workspace:/root/workspace -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e DISPLAY=$DISPLAY -e WORKDIR=~/workspace andersonmarcelino/devenv
+    -e DISPLAY=$DISPLAY -e WORKDIR=~/workspace -p 22:22 andersonmarcelino/devenv
 ```
 
 FIX IT LAT
