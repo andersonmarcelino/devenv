@@ -21,13 +21,21 @@ if [ -d ~/workspace/.config/ssh ]
     chmod 600 /root/.ssh/id_rsa
 fi
 
-echo -n "set a new root password:"
-stty -echo
-read password
-stty echo
-echo
+OPTIND=1
 
-echo "root:$password" | chpasswd
+while getopts "s" opt; do
+    case "$opt" in
+    s)  echo -n "set a new root password:"
+        stty -echo
+        read password
+        stty echo
+        echo
+        echo "root:$password" | chpasswd
+        /usr/sbin/sshd
+        ;;
+    esac
+done
 
-/usr/sbin/sshd
+shift $((OPTIND-1))
+
 exec "$@"
