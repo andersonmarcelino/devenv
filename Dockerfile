@@ -125,4 +125,5 @@ ENV LANG pt_BR.UTF-8
 
 WORKDIR /root/workspace
 
-ENTRYPOINT ["/bin/entry.sh", "tmux"]
+ENTRYPOINT ["/bin/entry.sh"]
+CMD ["tmux"]
