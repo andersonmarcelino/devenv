@@ -1,7 +1,5 @@
 # run common dockers commands
-alias yarn='docker exec -it workspace_${PWD##*/}_1 yarn'
 alias rails='docker exec -it workspace_${PWD##*/}_1 bundle exec rails'
-alias bundle='docker exec -it workspace_${PWD##*/}_1 bundle'
 alias rspec='docker exec -it workspace_${PWD##*/}_1 bundle exec rspec'
 alias runin='docker exec -it workspace_${PWD##*/}_1'
 
