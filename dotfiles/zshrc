@@ -59,6 +59,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 source /root/.aliases
 [[ -f ~/workspace/.config/aliases ]] && source ~/workspace/.config/aliases
+[[ -f ~/workspace/.config/gpgconfig ]] && source ~/workspace/.config/gpgconfig
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

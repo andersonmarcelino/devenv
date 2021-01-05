@@ -21,6 +21,17 @@ if [ -d ~/workspace/.config/ssh ]
     chmod 600 /root/.ssh/id_rsa
 fi
 
+if [ -d ~/workspace/.config/gnupg ]
+  then
+    cp -R ~/workspace/.config/gnupg /root/.gnupg
+    chmod 700 /root/.gnupg/trezor
+    chmod 644 /root/.gnupg/trezor/*
+    chmod 700 /root/.gnupg/trezor/env
+    chmod 700 /root/.gnupg/trezor/run-agent.sh
+    chmod 600 /root/.gnupg/trezor/pubring.kbx~
+    chmod 600 /root/.gnupg/trezor/trustdb.gpg
+fi
+
 OPTIND=1
 
 while getopts "s" opt; do

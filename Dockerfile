@@ -31,8 +31,9 @@ RUN apk add --no-cache \
     openssh-keygen \
     neovim \
     xclip \
+    gnupg \
+    python3-dev \
     tig
-
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
@@ -113,6 +114,19 @@ RUN cd /root/.config/nvim/bundle \
  && git clone --depth 1 https://github.com/maxbrunsfeld/vim-yankstack \
  && git clone --depth 1 https://github.com/junegunn/fzf.vim \
  && git clone --depth 1 https://github.com/briancollins/vim-jst
+
+
+RUN apk add --no-cache --virtual .build-deps \
+    libusb-dev \
+    eudev-dev \
+    musl-dev \
+    make \
+    gcc
+
+RUN pip3 install setuptools wheel attrs
+RUN pip3 install trezor_agent
+
+RUN apk del .build-deps
 
 COPY dotfiles/gitconfig /root/.gitconfig
 COPY dotfiles/zshrc /root/.zshrc
