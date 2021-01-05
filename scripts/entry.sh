@@ -32,6 +32,10 @@ if [ -d ~/workspace/.config/gnupg ]
     chmod 600 /root/.gnupg/trezor/trustdb.gpg
 fi
 
+if [ -f ~/workspace/.config/trezorconfig ]
+  then
+    socat TCP4-LISTEN:21325,fork,reuseaddr TCP4:host.docker.internal:21325 &
+fi
 OPTIND=1
 
 while getopts "s" opt; do

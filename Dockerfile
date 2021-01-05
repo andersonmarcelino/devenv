@@ -33,7 +33,8 @@ RUN apk add --no-cache \
     xclip \
     gnupg \
     python3-dev \
-    tig
+    tig \
+    socat
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 

@@ -34,14 +34,16 @@ read trezor
 
 if [[ $trezor == "Y" || $trezor == "y" ]]
 then
+  socat TCP4-LISTEN:21325,fork,reuseaddr TCP4:host.docker.internal:21325 &
+
   rm -rf ~/.gnupg/trezor/
   trezor-gpg init "$username <$useremail>" -v -t 0
 
-  cat > ~/workspace/.config/gpgconfig << GPGCONFIG
+  cat > ~/workspace/.config/trezorconfig << TREZORCONFIG
   export GNUPGHOME=~/.gnupg/trezor
-GPGCONFIG
+TREZORCONFIG
 
-  source ~/workspace/.config/gpgconfig
+  source ~/workspace/.config/trezorconfig
 
   signingkey=$(gpg --list-secret-keys --keyid-format LONG | grep sec | cut -d/ -f2 | cut -d' ' -f 1)
 
