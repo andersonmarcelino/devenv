@@ -52,6 +52,9 @@ GPGCONFIG
 GITGPG
 
   cp -R /root/.gnupg  ~/workspace/.config/gnupg
+
+  echo "Your key \n"
+  gpg --armor --export $signingkey
 else
   echo "generating ssh"
   cat /dev/zero | ssh-keygen -q -N "" > /dev/null
