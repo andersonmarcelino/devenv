@@ -1,6 +1,7 @@
 # [WIP]
 Just it
 
+Tested on Windows and linux
 
 to run the container
 ```bash
@@ -17,6 +18,11 @@ to run with ssh
     -e DISPLAY=$DISPLAY -e WORKDIR=~/workspace -p 22:22 \
     -v /etc/localtime:/etc/localtime:ro \
     andersonmarcelino/devenv -s tmux
+```
+
+On linux you need to puta a
+```
+  --network host
 ```
 
 FIX IT LAT

@@ -34,7 +34,8 @@ RUN apk add --no-cache \
     gnupg \
     python3-dev \
     tig \
-    socat
+    socat \
+    bind-tools
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 

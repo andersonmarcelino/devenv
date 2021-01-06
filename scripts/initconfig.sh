@@ -34,7 +34,10 @@ read trezor
 
 if [[ $trezor == "Y" || $trezor == "y" ]]
 then
-  socat TCP4-LISTEN:21325,fork,reuseaddr TCP4:host.docker.internal:21325 &
+  if host host.docker.internal;
+  then
+    socat TCP4-LISTEN:21325,fork,reuseaddr TCP4:host.docker.internal:21325 &
+  fi
 
   rm -rf ~/.gnupg/trezor/
   trezor-gpg init "$username <$useremail>" -v -t 0
