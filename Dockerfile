@@ -55,12 +55,6 @@ ENV SHELL /bin/zsh
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
-COPY scripts/entry.sh /bin/entry.sh
-RUN chmod +x /bin/entry.sh
-
-COPY scripts/initconfig.sh /bin/initconfig
-RUN chmod +x /bin/initconfig
-
 COPY scripts/runin.sh /bin/runin.sh
 RUN chmod +x /bin/runin.sh \
  && ln -s /bin/runin.sh /bin/node \
@@ -129,6 +123,13 @@ RUN pip3 install setuptools wheel attrs
 RUN pip3 install trezor_agent
 
 RUN apk del .build-deps
+
+COPY scripts/entry.sh /bin/entry.sh
+RUN chmod +x /bin/entry.sh
+
+COPY scripts/initconfig.sh /bin/initconfig
+RUN chmod +x /bin/initconfig
+
 
 COPY dotfiles/gitconfig /root/.gitconfig
 COPY dotfiles/zshrc /root/.zshrc

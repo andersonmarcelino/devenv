@@ -34,7 +34,7 @@ read trezor
 
 if [[ $trezor == "Y" || $trezor == "y" ]]
 then
-  if host host.docker.internal;
+  if host -t a host.docker.internal;
   then
     socat TCP4-LISTEN:21325,fork,reuseaddr TCP4:host.docker.internal:21325 &
   fi
