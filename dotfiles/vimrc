@@ -225,3 +225,7 @@ function! s:Open(file)
 endfunction
 
 command! AC :call <SID>CreateRelated()
+
+" use yank on clipboard
+set clipboard=unnamed
+set clipboard=unnamedplus
