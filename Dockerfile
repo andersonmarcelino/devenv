@@ -5,6 +5,7 @@
 #
 
 FROM docker/compose:alpine-1.26.0-rc2
+COPY --from=docker/buildx-bin:master /buildx /usr/libexec/docker/cli-plugins/docker-buildx
 
 RUN apk add --no-cache \
     zsh \
