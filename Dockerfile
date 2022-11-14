@@ -4,10 +4,13 @@
 # docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock andersonmarcelino/devenv
 #
 
-FROM docker/compose:alpine-1.26.0-rc2
-COPY --from=docker/buildx-bin:master /buildx /usr/libexec/docker/cli-plugins/docker-buildx
+FROM alpine:3.16
+
+RUN apk update && apk upgrade
 
 RUN apk add --no-cache \
+    docker-cli \
+    docker-cli-compose \
     zsh \
     bash \
     bash-completion \
@@ -34,6 +37,7 @@ RUN apk add --no-cache \
     xclip \
     gnupg \
     python3-dev \
+    py3-pip \
     tig \
     socat \
     bind-tools
@@ -118,6 +122,7 @@ RUN apk add --no-cache --virtual .build-deps \
     eudev-dev \
     musl-dev \
     make \
+    rust \
     gcc
 
 RUN pip3 install setuptools wheel attrs

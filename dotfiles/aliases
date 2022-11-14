@@ -12,9 +12,9 @@ alias bim='nvim'
 alias vim='nvim'
 
 #docker compose aliases
-alias dcup='docker-compose -f /root/workspace/docker-compose.yml up -d'
-alias dcstart='docker-compose -f /root/workspace/docker-compose.yml start'
-alias dcstop='docker-compose -f /root/workspace/docker-compose.yml stop'
+alias dcup='docker compose -f /root/workspace/docker-compose.yml up -d'
+alias dcstart='docker compose -f /root/workspace/docker-compose.yml start'
+alias dcstop='docker compose -f /root/workspace/docker-compose.yml stop'
 alias dps='docker ps --format '\''table {{.ID}}\t{{.Image}}\t{{.Status}}'\'
 
 #git without space
