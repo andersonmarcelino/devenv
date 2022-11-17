@@ -1,10 +1,10 @@
 # run common dockers commands
-alias rails='docker exec -it workspace_${PWD##*/}_1 bundle exec rails'
-alias rspec='docker exec -it workspace_${PWD##*/}_1 bundle exec rspec'
-alias runin='docker exec -it workspace_${PWD##*/}_1'
+alias rails='docker exec -it workspace-${PWD##*/}-1 bundle exec rails'
+alias rspec='docker exec -it workspace-${PWD##*/}-1 bundle exec rspec'
+alias runin='docker exec -it workspace-${PWD##*/}-1'
 
 # attach
-alias dattach='docker attach --detach-keys ctrl-x workspace_${PWD##*/}_1'
+alias dattach='docker attach --detach-keys ctrl-x workspace-${PWD##*/}-1'
 
 # xD
 alias :q='exit'

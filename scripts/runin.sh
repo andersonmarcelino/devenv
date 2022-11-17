@@ -1,2 +1,2 @@
 #!/bin/sh
-docker exec workspace_${PWD##*/}_1 ${0##*/} $@
+docker exec workspace-${PWD##*/}-1 ${0##*/} $@
