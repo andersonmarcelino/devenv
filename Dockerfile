@@ -72,11 +72,12 @@ RUN chmod +x /bin/runin.sh \
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 RUN ~/.fzf/install
 RUN cp ~/.fzf/bin/fzf /bin/fzf
+RUN rm ~/.zshrc
 
-RUN mkdir /root/.config
-RUN mkdir /root/.config/nvim
-RUN mkdir /root/.config/nvim/bundle
-RUN mkdir /root/.config/nvim/autoload
+RUN mkdir -p /root/.config \
+ && mkdir -p /root/.config/nvim \
+ && mkdir -p /root/.config/nvim/bundle \
+ && mkdir -p /root/.config/nvim/autoload
 
 RUN curl -LSso /root/.config/nvim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
@@ -114,18 +115,28 @@ RUN cd /root/.config/nvim/bundle \
  && git clone --depth 1 https://github.com/mattn/emmet-vim \
  && git clone --depth 1 https://github.com/maxbrunsfeld/vim-yankstack \
  && git clone --depth 1 https://github.com/junegunn/fzf.vim \
- && git clone --depth 1 https://github.com/briancollins/vim-jst
-
+ && git clone --depth 1 https://github.com/briancollins/vim-jst \
+ && git clone --depth 1 https://github.com/github/copilot.vim
 
 RUN apk add --no-cache --virtual .build-deps \
     libusb-dev \
     eudev-dev \
     musl-dev \
+    python3-tkinter \
     make \
     rust \
     gcc
 
-RUN pip3 install setuptools wheel attrs
+RUN pip3 install --upgrade setuptools wheel attrs
+
+RUN git clone https://github.com/trezor/cython-hidapi.git \
+ && cd cython-hidapi \
+ && git checkout 749da69 \
+ && git submodule update --init \
+ && python3 setup.py build \
+ && python3 setup.py install \
+ && cd .. && rm -rf cython-hidapi
+
 RUN pip3 install trezor_agent
 
 RUN apk del .build-deps
@@ -136,9 +147,8 @@ RUN chmod +x /bin/entry.sh
 COPY scripts/initconfig.sh /bin/initconfig
 RUN chmod +x /bin/initconfig
 
-
 COPY dotfiles/gitconfig /root/.gitconfig
-COPY dotfiles/zshrc /root/.zshrc
+COPY dotfiles/zshrc /root/.config/zsh/.zshrc
 COPY dotfiles/aliases /root/.aliases
 COPY dotfiles/tmux.conf /root/.tmux.conf
 COPY dotfiles/vimrc /root/.config/nvim/init.vim
