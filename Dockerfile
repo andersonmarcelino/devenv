@@ -40,7 +40,8 @@ RUN apk add --no-cache \
     py3-pip \
     tig \
     socat \
-    bind-tools
+    bind-tools \
+    nodejs
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
@@ -62,7 +63,6 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 
 COPY scripts/runin.sh /bin/runin.sh
 RUN chmod +x /bin/runin.sh \
- && ln -s /bin/runin.sh /bin/node \
  && ln -s /bin/runin.sh /bin/npm \
  && ln -s /bin/runin.sh /bin/ruby \
  && ln -s /bin/runin.sh /bin/yarn \
@@ -126,16 +126,6 @@ RUN apk add --no-cache --virtual .build-deps \
     make \
     rust \
     gcc
-
-RUN pip3 install --upgrade setuptools wheel attrs
-
-RUN git clone https://github.com/trezor/cython-hidapi.git \
- && cd cython-hidapi \
- && git checkout 749da69 \
- && git submodule update --init \
- && python3 setup.py build \
- && python3 setup.py install \
- && cd .. && rm -rf cython-hidapi
 
 RUN pip3 install trezor_agent
 

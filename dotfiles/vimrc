@@ -229,3 +229,5 @@ command! AC :call <SID>CreateRelated()
 " use yank on clipboard
 set clipboard=unnamed
 set clipboard=unnamedplus
+
+let g:copilot_workspace_folders = ["~/workspace"]
