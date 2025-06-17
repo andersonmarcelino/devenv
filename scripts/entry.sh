@@ -21,6 +21,13 @@ if [ -d ~/workspace/.config/ssh ]
     chmod 600 /root/.ssh/id_rsa
 fi
 
+if [ ! -d ~/workspace/.config/github-copilot ]
+  then
+    mkdir -p ~/workspace/.config/github-copilot
+fi
+
+ln -s ~/workspace/.config/github-copilot ~/.config/github-copilot
+
 if [ -d ~/workspace/.config/gnupg ]
   then
     cp -R ~/workspace/.config/gnupg /root/.gnupg
