@@ -4,7 +4,7 @@
 # docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock andersonmarcelino/devenv
 #
 
-FROM alpine:3.16
+FROM alpine:3.22
 
 RUN apk update && apk upgrade
 
@@ -127,7 +127,7 @@ RUN apk add --no-cache --virtual .build-deps \
     rust \
     gcc
 
-RUN pip3 install trezor_agent
+RUN pip3 install trezor_agent --break-system-packages
 
 RUN apk del .build-deps
 
