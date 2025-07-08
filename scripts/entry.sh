@@ -30,13 +30,13 @@ ln -s ~/workspace/.config/github-copilot ~/.config/github-copilot
 
 if [ -d ~/workspace/.config/gnupg ]
   then
-    cp -R ~/workspace/.config/gnupg /root/.gnupg
-    chmod 700 /root/.gnupg/trezor
-    chmod 644 /root/.gnupg/trezor/*
-    chmod 700 /root/.gnupg/trezor/env
-    chmod 700 /root/.gnupg/trezor/run-agent.sh
-    chmod 600 /root/.gnupg/trezor/pubring.kbx~
-    chmod 600 /root/.gnupg/trezor/trustdb.gpg
+    cp -R ~/workspace/.config/gnupg ~/.gnupg
+    chmod 700 ~/.gnupg/trezor
+    chmod 644 ~/.gnupg/trezor/*
+    chmod 700 ~/.gnupg/trezor/env
+    chmod 700 ~/.gnupg/trezor/run-agent.sh
+    chmod 600 ~/.gnupg/trezor/pubring.kbx~
+    chmod 600 ~/.gnupg/trezor/trustdb.gpg
 fi
 
 if [[ -f ~/workspace/.config/trezorconfig ]]
