@@ -56,6 +56,7 @@ while getopts "s" opt; do
         stty echo
         echo
         echo "root:$password" | chpasswd
+        sed -i 's/^AllowTcpForwarding[[:space:]]\+no/AllowTcpForwarding yes/' /etc/ssh/sshd_config
         /usr/sbin/sshd
         ;;
     esac
