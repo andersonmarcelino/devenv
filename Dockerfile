@@ -41,9 +41,7 @@ RUN apk add --no-cache \
     tig \
     socat \
     bind-tools \
-    nodejs \
-    build-base \
-    libc6-compat
+    nodejs
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
@@ -118,14 +116,7 @@ RUN cd /root/.config/nvim/bundle \
  && git clone --depth 1 https://github.com/maxbrunsfeld/vim-yankstack \
  && git clone --depth 1 https://github.com/junegunn/fzf.vim \
  && git clone --depth 1 https://github.com/briancollins/vim-jst \
- && git clone --depth 1 https://github.com/github/copilot.vim \
- && git clone --depth 1 https://github.com/nvim-treesitter/nvim-treesitter \
- && git clone --depth 1 https://github.com/MeanderingProgrammer/render-markdown.nvim \
- && git clone --depth 1 https://github.com/nvim-lua/plenary.nvim \
- && git clone --depth 1 https://github.com/MunifTanjim/nui.nvim \
- && git clone https://github.com/yetone/avante.nvim
-
-RUN cd /root/.config/nvim/bundle/avante.nvim && make
+ && git clone --depth 1 https://github.com/github/copilot.vim
 
 RUN apk add --no-cache --virtual .build-deps \
     libusb-dev \

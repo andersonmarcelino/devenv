@@ -235,24 +235,3 @@ set clipboard=unnamed
 set clipboard=unnamedplus
 
 let g:copilot_workspace_folders = ["~/workspace"]
-let g:copilot_enabled = 0
-
-lua << EOF
-  require('render-markdown').setup({})
-  require('nvim-treesitter.configs').setup(
-    {
-      ensure_installed = { "markdown", "markdown_inline" },
-      highlight = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
-    }
-  )
-  require('avante').setup({
-    input = {
-      provider = "claude"
-    }
-  })
-EOF
