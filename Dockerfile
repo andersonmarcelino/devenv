@@ -41,7 +41,8 @@ RUN apk add --no-cache \
     tig \
     socat \
     bind-tools \
-    nodejs
+    nodejs \
+    npm
 
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
@@ -60,6 +61,10 @@ RUN sed -i 's/#PermitRootLogin.*/PermitRootLogin\ yes/' /etc/ssh/sshd_config \
 ENV SHELL /bin/zsh
 
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+
+RUN npm install -g @anthropic-ai/claude-code
+
+RUN apk del npm
 
 COPY scripts/runin.sh /bin/runin.sh
 RUN chmod +x /bin/runin.sh \
