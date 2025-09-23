@@ -26,6 +26,14 @@ if [ ! -d ~/workspace/.config/github-copilot ]
     mkdir -p ~/workspace/.config/github-copilot
 fi
 
+if [ ! -e "/root/.claude.json" ]; then
+  ln -s $WORKDIR/.config/claude/claude.json /root/.claude.json
+fi
+
+if [ ! -d "/root/.claude" ]; then
+  ln -s $WORKDIR/.config/claude/claude /root/.claude
+fi
+
 ln -s ~/workspace/.config/github-copilot ~/.config/github-copilot
 
 if [ -d ~/workspace/.config/gnupg ]
