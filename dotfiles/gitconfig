@@ -31,5 +31,7 @@
   pager = more
 [merge]
   ff = only
+[diff]
+  tool = nvimdiff
 [include]
   path = ~/workspace/.config/gitconfig.local

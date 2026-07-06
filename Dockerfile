@@ -121,7 +121,8 @@ RUN cd /root/.config/nvim/bundle \
  && git clone --depth 1 https://github.com/maxbrunsfeld/vim-yankstack \
  && git clone --depth 1 https://github.com/junegunn/fzf.vim \
  && git clone --depth 1 https://github.com/briancollins/vim-jst \
- && git clone --depth 1 https://github.com/github/copilot.vim
+ && git clone --depth 1 https://github.com/github/copilot.vim \
+ && git clone --depth 1 https://github.com/chrisbra/vim-diff-enhanced
 
 RUN apk add --no-cache --virtual .build-deps \
     libusb-dev \
