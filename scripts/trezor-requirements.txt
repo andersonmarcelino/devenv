@@ -10,7 +10,7 @@ click==8.4.2
 ConfigArgParse==1.7.5
 construct==2.10.70
 construct-classes==0.2.3
-cryptography==49.0.0
+cryptography==50.0.0
 docutils==0.23
 ecdsa==0.19.2
 hidapi==0.15.0
