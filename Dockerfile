@@ -133,7 +133,8 @@ RUN apk add --no-cache --virtual .build-deps \
     rust \
     gcc
 
-RUN pip3 install trezor_agent --break-system-packages
+COPY scripts/trezor-requirements.txt /tmp/trezor-requirements.txt
+RUN pip3 install --no-deps -r /tmp/trezor-requirements.txt --break-system-packages
 
 RUN apk del .build-deps
 
