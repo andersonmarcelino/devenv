@@ -44,5 +44,5 @@ trezor==0.20.1
 trezor_agent==0.13.0
 typing_extensions==4.16.0
 Unidecode==1.4.0
-urllib3==2.7.0
+urllib3==2.8.0
 wheel==0.47.0
